@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Counter extends Component {
 
   state = {
-    count: 1
+    count: 1,
   }
 
   formatCount = () => {
@@ -12,13 +12,20 @@ class Counter extends Component {
   }
 
   render() {
+
     return (
       <div className="Counter">
-        <span> {this.formatCount()} </span>
-        <button className="btn btn-primary"> Increment! </button>
+        <span className={this.getBadgeClasses()}> {this.formatCount()} </span>
+        <button className="btn btn-secondary btn-sm"> Increment! </button>
       </div>
     );
   }
+
+    getBadgeClasses() {
+        let classes = "badge m-2 badge-";
+        classes += this.state.count === 0 ? "warning" : "primary";
+        return classes;
+    }
 }
 
 export default Counter;
